@@ -1,0 +1,82 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:element name="discos">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="grupo" type="tipo_grupo" minOccurs="1" maxOccurs="unbounded"></xsd:element>
+                <xsd:element name="disco" type="tipo_disco" minOccurs="1" maxOccurs="unbounded"></xsd:element>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:complexType name="tipo_grupo">
+        <xsd:sequence >
+            <xsd:element name="nombre" type="tipo_texto_50"></xsd:element>
+            <xsd:element name="mienbro" type="tipo_texto_50" minOccurs="1" maxOccurs="unbounded"></xsd:element>
+            <xsd:element name="nacionalidad" type="tipo_texto_50" minOccurs="0"></xsd:element>
+            <xsd:choice minOccurs="0">
+                <xsd:sequence>
+                    <xsd:element name="web" type="xsd:string"></xsd:element>
+                    <xsd:element name="email" type="xsd:string"></xsd:element>
+                </xsd:sequence>
+                <xsd:sequence>
+                    <xsd:element name="calle" type="tipo_texto_50"></xsd:element>
+                    <xsd:element name="locacalidad" type="tipo_texto_50"></xsd:element>
+                </xsd:sequence>
+            </xsd:choice>
+        </xsd:sequence>
+        <xsd:attribute name="nom" type="tipo_texto_50"></xsd:attribute>
+    </xsd:complexType>
+    <xsd:complexType name="tipo_disco">
+        <xsd:sequence>
+            <xsd:element name="interprete" >
+                <xsd:complexType>
+                    <xsd:attribute name="nom" type="tipo_texto_50"></xsd:attribute>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="titulo" type="tipo_texto_50"></xsd:element>
+            <xsd:element name="discografia" type="xsd:string"></xsd:element>
+            <xsd:element name="anio" >
+                <xsd:complexType>
+                    <xsd:attribute name="nom" type="tipo_mes_enumerado"></xsd:attribute>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="stock" type="xsd:integer">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:integer"> 
+                        <xsd:maxInclusive value="0"></xsd:maxInclusive> 
+                        <xsd:maxInclusive value="200"></xsd:maxInclusive>
+                    </xsd:restriction>
+                </xsd:simpleType>
+            </xsd:element>
+        </xsd:sequence>
+        <xsd:attribute name="precio" type="xsd:float"></xsd:attribute>
+    </xsd:complexType>
+
+    <xsd:simpleType name="tipo_mes_enumerado">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="enero"></xsd:enumeration>
+            <xsd:enumeration value="febreo"></xsd:enumeration>
+            <xsd:enumeration value="marzo"></xsd:enumeration>
+            <xsd:enumeration value="abril"></xsd:enumeration>
+            <xsd:enumeration value="mayo"></xsd:enumeration>
+            <xsd:enumeration value="junio"></xsd:enumeration>
+            <xsd:enumeration value="julio"></xsd:enumeration>
+            <xsd:enumeration value="agosto"></xsd:enumeration>
+            <xsd:enumeration value="septiembre"></xsd:enumeration>
+            <xsd:enumeration value="octubre"></xsd:enumeration>
+            <xsd:enumeration value="noviembre"></xsd:enumeration>
+            <xsd:enumeration value="diciembre"></xsd:enumeration>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="tipo_texto_50">
+        <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="50"></xsd:maxLength>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="tipo_restricion_web">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="xsd:string"></xsd:pattern>
+            
+        </xsd:restriction>
+    </xsd:simpleType>
+</xsd:schema>
