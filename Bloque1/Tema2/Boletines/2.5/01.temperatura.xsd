@@ -20,9 +20,20 @@
         </xsd:restriction>
     </xsd:simpleType>
 
+    <xsd:simpleType name="tipo_temperatura">
+        <xsd:restriction base="xsd:integer">
+            <xsd:minInclusive value="-50"/>
+            <xsd:maxInclusive value="50"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
     <xsd:complexType name="tipo_incidencias">
         <xsd:sequence>
+<<<<<<< HEAD
             <xsd:element name="incidencia" minOccurs="1" maxOccurs="unbounded"></xsd:element>
+=======
+            <xsd:element name="incidencia" minOccurs="1" maxOccurs="unbounded"/>
+>>>>>>> 7dbe3c2b33c74f1e63635996aecd932b6f44d906
         </xsd:sequence>
     </xsd:complexType>
 
@@ -44,11 +55,19 @@
         </xsd:restriction>
     </xsd:simpleType>
 
+<<<<<<< HEAD
     <xsd:element name="incidencia" >
         <xsd:complexType>    
         <xsd:attribute name="nombre" type="tipo_att_clima"></xsd:attribute>   
         <xsd:attribute name="nombre" type="tipo_att_severidad"></xsd:attribute>
     </xsd:complexType> 
+=======
+    <xsd:element name="incidencia">
+        <xsd:complexType>
+            <xsd:attribute name="nombre" type="tipo_att_clima"></xsd:attribute>
+            <xsd:attribute name="severidad" type="tipo_att_severidad"></xsd:attribute>
+        </xsd:complexType>
+>>>>>>> 7dbe3c2b33c74f1e63635996aecd932b6f44d906
     </xsd:element>
 
 </xsd:schema>
